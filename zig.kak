@@ -87,6 +87,11 @@ hook -group zig-highlight global WinSetOption filetype=zig %{
 
 hook global WinSetOption filetype=zig %[
     set-option buffer comment_line '//'
+    set-option buffer makecmd 'zig build'
+    set-option buffer formatcmd 'zig fmt'
+    set-option buffer tabstop 4
+    set-option buffer indentwidth 4
+
     hook -group zig-hooks window ModeChange insert:.* zig-filter-around-selections
     hook -group zig-indent window InsertChar \n zig-indent-on-new-line
     hook -group zig-indent window InsertChar \} zig-indent-on-closing-curly-brace
